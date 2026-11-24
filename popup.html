@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms Utility Helper</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Forms Helper</h1>
+      <span class="badge" id="rpmBadge">0 / 15 RPM</span>
+    </header>
+
+    <div class="field">
+      <label for="apiKey">Gemini API Key</label>
+      <div class="input-row">
+        <input
+          type="password"
+          id="apiKey"
+          placeholder="AIzaSy..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button type="button" id="toggleKeyVis" class="icon-btn" title="Show/Hide Key">
+          Show
+        </button>
+      </div>
+    </div>
+
+    <div class="field-grid">
+      <div class="field">
+        <label for="modelName">Model</label>
+        <input
+          type="text"
+          id="modelName"
+          value="gemini-3.5-flash-lite"
+          spellcheck="false"
+        />
+      </div>
+
+      <div class="field">
+        <label for="toggleKey">Hide Key</label>
+        <input
+          type="text"
+          id="toggleKey"
+          value="`"
+          maxlength="1"
+          title="Single key to toggle hint visibility (Alt+H also works anywhere)"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="label-row">
+        <label for="hintOpacity">Hint Opacity</label>
+        <span id="opacityVal" class="mono-val">16%</span>
+      </div>
+      <input
+        type="range"
+        id="hintOpacity"
+        min="2"
+        max="100"
+        step="1"
+        value="16"
+      />
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="autoFallback" checked />
+      <label for="autoFallback">
+        Auto-fallback on 404
+      </label>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="saveBtn" class="primary-btn">Save</button>
+      <button type="button" id="solveAllBtn" class="secondary-btn">Solve Form</button>
+    </div>
+
+    <div id="statusMsg" class="status-msg" aria-live="polite"></div>
+
+    <hr class="divider" />
+
+    <div class="quick-guide">
+      <p><span>First word</span> Click to reveal hint</p>
+      <p><span>Visibility</span> <kbd id="kbdDisplay">`</kbd> or <kbd>Alt+H</kbd></p>
+      <p><span>All hints</span> Click <kbd>· · ·</kbd> at bottom</p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

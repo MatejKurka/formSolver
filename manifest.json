@@ -1,0 +1,54 @@
+{
+  "manifest_version": 2,
+  "name": "Forms Utility Helper",
+  "version": "1.5.1",
+  "description": "Contextual form assistant powered by Gemini Flash Lite with 15 RPM rate limiting for Zen Browser.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "forms-solver@matej.local",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "https://docs.google.com/forms/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Forms Utility Helper",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.google.com/forms/*"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
